@@ -1,0 +1,123 @@
+<div id="booking" class="section">
+    <div class="section-center">
+        <div class="container">
+            <div class="row text-align-center justify-content-center"><h4 *ngIf="loggedinUser">Welcome {{loggedinUser}}!</h4></div>
+            
+            <br>
+            <div class="row">
+                <div class="booking-form">
+                    <form [formGroup]="busData" (submit)="getBuses();">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <span class="form-label">Source City</span>
+
+                                    <select class="form-control" formControlName="source">
+                                        <option>Source City</option>
+                                        <option value="Chennai">Chennai</option>
+                                        <option value="Trichy">Trichy</option>
+                                        <option value="Madurai">Madurai</option>
+                                    </select>
+
+                                    <!-- <input class="form-control" type="text" placeholder="source City" formControlName="source">  -->
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <span class="form-label">Destination City</span>
+                                    <select class="form-control" formControlName="destination">
+                                        <option>Destination City</option>
+                                        <option value="Chennai">Chennai</option>
+                                        <option value="Trichy">Trichy</option>
+                                        <option value="Madurai">Madurai</option>
+                                    </select>
+                                    <!-- <input class="form-control" type="text" placeholder="Destination City" formControlName="destination"> -->
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <span class="form-label">Departing</span>
+                                    <input class="form-control" type="date" required formControlName="departDate">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-btn">
+                                    <input type="submit" class="submit-btn" value="Show Buses" />
+                                    <!-- <button class="submit-btn">Show Buses</button> -->
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-3">
+                                <div class="form-group">
+                                    <span class="form-label">Tickets</span>
+                                    <input class="form-control" type="number" required formControlName="ticketcnt">
+
+                                </div>
+                            </div> -->
+                        </div>                      
+                    </form>
+                </div>
+            </div>
+        </div>
+<hr>
+        <div class="container">
+            <table *ngIf="busResults" class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">AgencyName</th>
+                        <th scope="col">Source</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">DepartDate</th>
+                        <th scope="col">DepartTime</th>
+                        <th scope="col">Availability</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                        <tr *ngFor="let bus of busResults ;let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{bus.agencyname}}</td>
+                            <td>{{bus.source}}</td>
+                            <td>{{bus.destination}}</td>
+                            <td>{{bus.departDate}}</td>
+                            <td>{{bus.departTime}}</td>
+                            <td>{{bus.avlSeats}}</td>
+                            <td><a routerLink="/home/bookticket" (click)="setBusData(bus)">Book</a></td>
+                        </tr>
+                    
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="assets\Img\vipbus.jpg" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="assets\Img\busbg.jpg" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="assets\Img\buses.jpg" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
