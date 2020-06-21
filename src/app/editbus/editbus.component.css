@@ -1,6 +1,6 @@
 .section {
 	position: relative;
-	height: 80vh;
+	height: 100vh;
 }
 
 .section .section-center {
@@ -175,20 +175,9 @@
 .booking-form .submit-btn:hover,
 .booking-form .submit-btn:focus {
     opacity: 0.9;
+    margin: 0;
     
 }
-h4{
-	font-weight: bold;
-	color: white;
-	background-color: black;
-	font-size: 25px;
-	opacity: .9;
-	border-radius: 10px;
-}
-
-.booklink
-{
-	color: gray;
-    cursor: not-allowed;
-    text-decoration: underline;
+.subBtn{
+	text-align: center;
 }

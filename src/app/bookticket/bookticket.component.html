@@ -1,8 +1,63 @@
-<br>
-<div *ngIf="busInfo" class="container seatDesign col-sm-5">
+<!-- View Ticket -->
+<div id="bookticket">
+<div class="container ticket col-sm-8" *ngIf="isViewTicket">
+    <h4>E- Ticket</h4>
+    <br>
+    <div class="row">
+        <table class="table table-striped ticket1" style="margin-bottom: 0">
+            <tbody>
+                <!-- Data -->
+                <tr>
+                    <th class="tick">Passenger Name</th>
+                    <th class="tick">Mobile</th>
+                    <th class="tick">Seat #</th>
+                    <th class="tick">Status</th>
+                    <th class="tick">Ticket Id</th>
+                </tr>
+                <tr>
+                    <td>{{ticketInfo?.userName}}</td>
+                    <td>{{ticketInfo?.userPhone}}</td>
+                    <td>{{ticketInfo?.seats}}</td>
+                    <td>{{ticketInfo?.status}}</td>
+                    <td>{{ticketInfo?.ticketId}}</td>
+                </tr>
+                <tr>
+                    <th colpan="2" class="tick">Bus Agency</th>
+                    <th class="tick">Bus #</th>
+                    <th class="tick">Departure</th>
+                    <th class="tick">Arrival</th>
+                </tr>
+                <tr>
+                    <td colpan="2">{{ticketInfo?.agencyname}}</td>
+                    <td>{{ticketInfo?.busNum}}</td>
+                    <td>{{ticketInfo?.source}} <p>{{ticketInfo?.departTime}} am</p>
+                        <p id="date1">{{ticketInfo?.departDate | date:'mediumDate'}}</p>
+                    </td>
+                    <td>{{ticketInfo?.destination}}<p>{{ticketInfo?.arrivalTime}} pm</p>
+                        <p>{{ticketInfo?.arrivalDate | date:'mediumDate'}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2" class="tick">Booking Date</th>
+                    <th colspan="2" class="tick">Booking Time</th>
+                    <th class="tick">Payment Details</th>
+                </tr>
+                <tr>
+                    <td colspan="2">{{ticketInfo?.bookingDate | date:'mediumDate'}}</td>
+                    <td colspan="2">{{ticketInfo?.bookingTime}}</td>
+                    <td>Fare :{{ticketInfo?.fare | currency:'INR'}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
+<div *ngIf="busInfo && isBusInfo" class="container seatDesign col-sm-5">
 
     <div class="row">
-        <table class="table table-striped" style="margin-bottom: 0">
+        <table class="table table-striped passInfo" style="margin-bottom: 0">
 
             <thead>
                 <!-- Column names -->
@@ -37,13 +92,22 @@
                     <th scope="row">Departure Time:</th>
                     <td>{{busInfo?.departTime}}</td>
                 </tr>
+
+                <tr>
+                    <th scope="row">Arrival Date:</th>
+                    <td>{{busInfo?.arrivalDate}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Arrival Time:</th>
+                    <td>{{busInfo?.arrivalTime}}</td>
+                </tr>
             </tbody>
 
         </table>
 
     </div>
 </div>
-<div class="container seatDesign col-sm-5">
+<div *ngIf="isBusSeats" class="container seatDesign col-sm-5">
     <div class="row">
         <ul class="showcase">
             <li>
@@ -97,12 +161,13 @@
         <br>
         <div class="row">
             <input type="submit" class="btn btn-info buttonmargin" value="Confirm">
-            
+
         </div>
         <div class="row">
-                    
-            <span  *ngIf="(!isUserLoggedIn)" class="validate">Please Signin to get your tickets booked</span>
-       
+
+            <span *ngIf="!isUserLoggedIn && isConfirmClicked" class="validate">Please Signin to get your tickets
+                booked</span>
+            <span *ngIf="!isMakePayment && isConfirmClicked" class="validate">No Tickets Available</span>
         </div>
 
 
@@ -113,11 +178,11 @@
 </div>
 
 
-<div class="container cont3 col-sm-3" *ngIf="isMakePayment && userEmail">
+<div class="container cont3 col-sm-3" *ngIf="isMakePayment && isUserLoggedIn">
     <h4>Passenger Information</h4>
     <br>
     <div class="row">
-        <table class="table table-striped" style="margin-bottom: 0">
+        <table class="table table-striped passInfo" style="margin-bottom: 0">
 
             <thead>
                 <!-- Column names -->
@@ -145,8 +210,9 @@
                     <td>{{bookSeats}}</td>
                 </tr>
                 <tr>
-                  <td><button class="btn btn-info" (click)="makePayment();">Make Payment</button></td>  
-                  <td></td>
+                    <td><button class="btn btn-info" (click)="makePayment();">Make Payment</button></td>
+                    <td><button *ngIf="isBookingSuccess" class="btn btn-info" (click)="viewTicket();">View
+                            Ticket</button></td>
                 </tr>
 
             </tbody>
@@ -157,69 +223,6 @@
     <div class="row">
         <span class="bookingSuccess" *ngIf="isBookingSuccess">Your Ticket has been successfully booked.</span>
     </div>
-    <div class="row">
-        <a class="btn btn-info" value="View Ticket"></a>
-    </div>
 </div>
 
-
-
-<!-- <div *ngIf="isMakePayment" id="booking" class="section">
-    <div class="section-center">
-        <div class="container">
-            <div class="row">
-                <div class="booking-form">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <span class="form-label">Name</span>
-                                    <label>{{userName}}</label>                                   
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <span class="form-label">Email</span>
-                                    <label>{{userEmail}}</label>                                   
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <span class="form-label">Phone</span>
-                                    <label>{{userPhone}}</label>                                   
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <span class="form-label">Seat Nos:</span>
-                                    <label>{{bookSeats}}</label>                                   
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            
-                            <div class="col-md-6 subBtn">
-                                <div class="form-btn">
-                                    <input type="button" class="submit-btn" value="MakePayment" (click)="makePayment();" />                                   
-                                </div>
-                            </div>                           
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <span class="form-label">Your Ticket Has been booked succesfully</span> 
-                                    <span class="form-label"><a href="#" class="submit-btn">View Ticket</a></span>                                   
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+</div>

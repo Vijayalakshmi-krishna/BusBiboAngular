@@ -5,6 +5,10 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { BookticketComponent } from './bookticket/bookticket.component';
 import { BusOperatorComponent } from './bus-operator/bus-operator.component';
+import { EditbusComponent } from './editbus/editbus.component';
+import { ListbusesComponent } from './listbuses/listbuses.component';
+import { ViewticketComponent } from './viewticket/viewticket.component';
+import { PrintticketComponent } from './printticket/printticket.component';
 
 const routes: Routes = [
 
@@ -30,9 +34,26 @@ const routes: Routes = [
     component: BookticketComponent
   },
   {
-    path: 'busoperator',
+    path: 'addbus',
     component: BusOperatorComponent
+  },
+  {
+    path:"editbus",
+    component:EditbusComponent
+  },
+  {
+    path:"listbus",
+    component:ListbusesComponent
+  },
+  {
+    path:"viewticket",
+    component:ViewticketComponent
+  },
+  {
+    path:"printticket",
+    component:PrintticketComponent
   }
+
 
 ];
 

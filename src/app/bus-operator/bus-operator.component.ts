@@ -17,6 +17,8 @@ export class BusOperatorComponent implements OnInit {
       'busNum':new FormControl('',Validators.required),
       'departDate':new FormControl('',Validators.required),
       'departTime':new FormControl('',Validators.required),
+      'arrivalDate':new FormControl('',Validators.required),
+      'arrivalTime':new FormControl('',Validators.required),
       'avlSeats':new FormControl('',Validators.required)
       
     })

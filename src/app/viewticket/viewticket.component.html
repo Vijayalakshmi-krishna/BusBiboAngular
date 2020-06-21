@@ -1,51 +1,25 @@
-<div class="row">
-    <table class="table table-striped" style="margin-bottom: 0">
-        <caption>Ticket Information</caption>
-        <thead>
-            <!-- Column names -->
-            <tr>
-                <th scope="col-sm-12">Passenger Name</th>
-                <th scope="col-sm-12">Bus #</th>
-                
-            </tr>
-            <tr>
-                <th scope="col-sm-12">Passenger Email</th>
-                <th scope="col-sm-12">Source</th>                
-            </tr>
-            <tr>
-                <th scope="col-sm-12">Phone</th>
-                <th scope="col-sm-12">Desination</th>                
-            </tr>
-            <tr>
-                <th scope="col-sm-12">Departure Date</th>
-                <th scope="col-sm-12">Departure Time</th>                
-            </tr>
-            <tr>
-                <th scope="col-sm-12">No. Of Tickets</th>
-                <th scope="col-sm-12">Total Fare</th>                
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data -->
-            <tr>
-               
-                <td>{{userName}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Email:</th>
-                <td>{{userEmail}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Contact:</th>
-                <td>{{userPhone}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Seat #:</th>
-              
-            </tr>            
 
-        </tbody>
-
-    </table>
-
+<div class="container">
+   <table *ngIf="ticketsList && userEmail!=null " class="table table-striped ticket1" style="margin-bottom: 0">
+<tbody>
+    <th>Ticket Id</th>
+    <th>Bus #</th>
+    <th>Source</th>
+    <th>Destination</th>
+    <th>Seats</th>
+    <th>departureDate</th>
+    <th>departureTime</th>
+    <th>View Tickets</th>
+    <tr *ngFor="let tickets of ticketsList">
+        <td>{{tickets?.ticketId}}</td>
+        <td>{{tickets?.busNum}}</td>
+        <td>{{tickets?.source}}</td>
+        <td>{{tickets?.destination}}</td>
+        <td>{{tickets?.seats}}</td>
+        <td>{{tickets?.departDate | date:'mediumDate'}}</td>
+        <td>{{tickets?.departTime}}</td>
+        <td><a class="btn btn-primary" (click)="setTicketId(tickets?.ticketId)">View Ticket</a></td>
+    </tr>
+</tbody>
+</table>
 </div>

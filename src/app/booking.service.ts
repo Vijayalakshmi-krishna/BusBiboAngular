@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,47 +8,71 @@ import {Observable} from 'rxjs';
 export class BookingService {
 
   busData;
+  ticketId;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  loginUser(data):Observable<any>
-  {
+  loginUser(data): Observable<any> {
     console.log("Inservice")
     console.log(data);
-    return this.http.post('http://localhost:3000/login',data);
+    return this.http.post('http://localhost:3000/login', data);
   }
 
-  registerUser(data):Observable<any>
-  {
-    return this.http.post('http://localhost:3000/login/register',data);
+  registerUser(data): Observable<any> {
+    return this.http.post('http://localhost:3000/login/register', data);
   }
 
-  getbusData(data):Observable<any>
-  {
-    return this.http.post('http://localhost:3000/buslist',data);
+  searchbus(data): Observable<any> {
+    return this.http.post('http://localhost:3000/searchbuses', data);
   }
 
-  addbusData(data):Observable<any>
-  {
-    return this.http.post('http://localhost:3000/addbus',data);
+  getBuses(): Observable<any> {
+    return this.http.get('http://localhost:3000/buslist')
   }
 
-  getBusInfo()
-  {
+  addbusData(data): Observable<any> {
+    return this.http.post('http://localhost:3000/addbus', data);
+  }
+
+  editBusData(data): Observable<any> {
+    return this.http.put('http://localhost:3000/editbus/' + data.busNum, data)
+  }
+
+  getBusInfo() {
     return this.busData;
   }
-  setBusInfo(busData)
-  {
-    this.busData=busData;
+  setBusInfo(busData) {
+    this.busData = busData;
   }
 
-  setBlockedSeats(seats):Observable<any>
-  {
-    return this.http.put('http://localhost:3000/editSeats/'+this.busData.busNum,seats);
+  setBlockedSeats(seats): Observable<any> {
+    return this.http.put('http://localhost:3000/editSeats/' + this.busData.busNum + '/' + this.busData.avlSeats, seats);
   }
 
-  getBlockedSeats(busNum):Observable<any>
-  {
+  getBlockedSeats(busNum): Observable<any> {
     return this.http.get('http://localhost:3000/seatstatus/' + busNum)
+  }
+
+  setTicketData(ticketData): Observable<any> {
+    return this.http.post('http://localhost:3000/addticket', ticketData)
+  }
+
+  getUserTickets(email): Observable<any> {
+    return this.http.get('http://localhost:3000/listtickets/' + email)
+  }
+
+  setTicketId(ticketId)
+  {
+    this.ticketId=ticketId;
+  }
+
+  getTIcketId()
+  {
+    return this.ticketId;
+  }
+
+  getTicket(ticketId)
+  {
+    return this.http.get('http://localhost:3000/viewticket/' + ticketId)
   }
 }

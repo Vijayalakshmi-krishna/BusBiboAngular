@@ -3,3 +3,7 @@ table.ticket1{
     border-radius: 15px;
     color: black !important; 
   }
+  th.tick{
+    background-color: green;
+    color: white !important; 
+  }

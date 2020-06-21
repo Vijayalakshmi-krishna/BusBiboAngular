@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingService } from '../booking.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-viewticket',
@@ -11,18 +13,28 @@ export class ViewticketComponent implements OnInit {
   userName;
   userEmail;
   userPhone;
-  busInfo;
-  constructor(private bookingservice:BookingService) { }
+  ticketsList;
+  constructor(private bookingservice:BookingService,private router:Router) { }
 
   ngOnInit(): void {
-    this.busInfo = this.bookingservice.getBusInfo();
-    if(this.busInfo)
-    {
-      console.log(this.busInfo)
-    }
+    
     this.userName = sessionStorage.getItem('name');
     this.userEmail = sessionStorage.getItem('email');
     this.userPhone = sessionStorage.getItem('phone');
+
+    this.bookingservice.getUserTickets(this.userEmail).subscribe((data)=>{
+      console.log(data);
+      this.ticketsList=data;
+      console.log(this.ticketsList)
+    })
+
+    
+  }
+
+  setTicketId(ticketId)
+  {
+    this.bookingservice.setTicketId(ticketId);
+    this.router.navigate(['/printticket'])
   }
 
 }

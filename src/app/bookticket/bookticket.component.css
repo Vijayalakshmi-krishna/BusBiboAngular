@@ -3,9 +3,18 @@
 * {
   box-sizing: border-box;
 }
+/* .img1{
+  background-image: url("../../assets/Img/bus3.jpg");
+  background-size: cover;
+} */
 
+#bookticket
+{
+  background-image: url("../../assets/Img/seats4.jpg");
+  background-size: cover;
+}
 .container.seatDesign {
-  background-color: #242333;
+  background-color:brown;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -13,6 +22,7 @@
   justify-content: center;
   height: 100vh;
   font-family: 'Lato', sans-serif; 
+  opacity:0.8;  
 }
 
 .container {
@@ -50,11 +60,10 @@
   transform: scale(1.2);
 }
 
-
 .showcase .seat:not(.occupied):hover {
-    cursor: not-allowed;
-    transform: scale(1);
-  }
+  cursor: default;    
+  transform: scale(1);
+}
   
   .showcase {
     background: rgb(250, 60, 250);
@@ -92,20 +101,21 @@ p.text span {
     text-align: center;
 }
 .cont3{
-	background: black;
-	opacity: .9;
+	background-color: brown;
+	opacity: .8;
 	color: blue;
 
 }
 .col-sm-12{
 	color: greenyellow;
 }
-th,td{
+.passInfo{
 	color: white;
 }
 
 .validate
 {
+  background-color: yellow;
 	color: red;
 }
 
@@ -114,6 +124,17 @@ th,td{
 }
 .bookingSuccess
 {
+  background-color: yellow;
   color: green;
 }
 
+
+table.ticket1{
+  background-color: lightgrey !important;
+  border-radius: 15px;
+  color: black !important; 
+}
+th.tick{
+  background-color: green;
+  color: white !important; 
+}

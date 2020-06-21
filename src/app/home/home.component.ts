@@ -30,9 +30,19 @@ export class HomeComponent implements OnInit {
   getBuses() {
 
     console.log(this.busData.value);
-    this.bookingService.getbusData(this.busData.value).subscribe((data) => {
+    this.bookingService.searchbus(this.busData.value).subscribe((data) => {
       console.log(data);
       this.busResults=data;
+
+
+      // const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      // let i = 0;
+      // for (i = 0; i < this.busResults.length; i++) {
+      //   this.busResults[i].departDate = new Date()
+      //   this.busResults[i].departDate = this.busResults[i].departDate.getDate() + "-" + months[this.busResults[i].departDate.getMonth()] + "-" + this.busResults[i].departDate.getFullYear();
+      //   console.log(this.busResults[i].departDate)
+      // }
+
       // this.buses=this.busResults[0].buses
       // console.log(this.buses);
     })

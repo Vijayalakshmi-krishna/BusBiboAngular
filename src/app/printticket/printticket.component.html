@@ -1,0 +1,56 @@
+
+<div class="container ticket col-sm-8">
+    <h4>E- Ticket</h4>
+    <br>
+    <div class="row">
+        <table class="table table-striped ticket1" style="margin-bottom: 0">
+            <tbody>
+               
+                <tr>
+                    <th class="tick">Passenger Name</th>
+                    <th class="tick">Mobile</th>
+                    <th class="tick">Seat #</th>
+                    <th class="tick">Status</th>
+                    <th class="tick">Ticket Id</th>
+                </tr>
+                <tr>
+                    <td>{{ticketInfo?.userName}}</td>
+                    <td>{{ticketInfo?.userPhone}}</td>
+                    <td>{{ticketInfo?.seats}}</td>
+                    <td>{{ticketInfo?.status}}</td>
+                    <td>{{ticketInfo?.ticketId}}</td>
+                </tr>
+                <tr>
+                    <th class="tick">Bus Agency</th>
+                    <th class="tick">Bus #</th>
+                    <th class="tick">Departure</th>
+                    <th class="tick">Arrival</th>
+                    <th class="tick"></th>
+                </tr>
+                <tr>
+                    <td>{{ticketInfo?.agencyname}}</td>
+                    <td>{{ticketInfo?.busNum}}</td>
+                    <td>{{ticketInfo?.source}} <p>{{ticketInfo?.departTime}}</p>
+                        <p id="date1">{{ticketInfo?.departDate | date:'mediumDate'}}</p>
+                    </td>
+                    <td>{{ticketInfo?.destination}}<p>{{ticketInfo?.arrivalTime}}</p>
+                        <p>{{ticketInfo?.arrivalDate | date:'mediumDate'}}</p>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th colspan="2" class="tick">Booking Date</th>
+                    <th colspan="2" class="tick">Booking Time</th>
+                    <th class="tick">Payment Details</th>
+                </tr>
+                <tr>
+                    <td colspan="2">{{ticketInfo?.bookingDate | date:'mediumDate'}}</td>
+                    <td colspan="2">{{ticketInfo?.bookingTime}}</td>
+                    <td>Fare :{{ticketInfo?.fare | currency:'INR'}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>

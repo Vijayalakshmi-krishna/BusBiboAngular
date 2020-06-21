@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BusOperatorComponent } from './bus-operator/bus-operator.component';
 import { BookticketComponent } from './bookticket/bookticket.component';
 import { ViewticketComponent } from './viewticket/viewticket.component';
+import { EditbusComponent } from './editbus/editbus.component';
+import { ListbusesComponent } from './listbuses/listbuses.component';
+import { PrintticketComponent } from './printticket/printticket.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ViewticketComponent } from './viewticket/viewticket.component';
     HomeComponent,
     BusOperatorComponent,
     BookticketComponent,
-    ViewticketComponent
+    ViewticketComponent,
+    EditbusComponent,
+    ListbusesComponent,
+    PrintticketComponent
   ],
   imports: [
     BrowserModule,
