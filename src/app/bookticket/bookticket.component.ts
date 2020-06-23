@@ -129,7 +129,7 @@ export class BookticketComponent implements OnInit {
 
   makePayment() {
 
-   // this.isMakePayment = true;
+   this.isMakePayment = true;
 
 
     //update the seats inforation into the db

@@ -28,6 +28,7 @@
                     <th class="tick">Bus #</th>
                     <th class="tick">Departure</th>
                     <th class="tick">Arrival</th>
+                    <th class="tick"></th>
                 </tr>
                 <tr>
                     <td colpan="2">{{ticketInfo?.agencyname}}</td>
@@ -38,6 +39,7 @@
                     <td>{{ticketInfo?.destination}}<p>{{ticketInfo?.arrivalTime}} pm</p>
                         <p>{{ticketInfo?.arrivalDate | date:'mediumDate'}}</p>
                     </td>
+                    <td></td>
                 </tr>
                 <tr>
                     <th colspan="2" class="tick">Booking Date</th>
@@ -181,11 +183,11 @@
 
 <br>
 <div class="container cont3 col-sm-3" *ngIf="isMakePayment && isUserLoggedIn">   
-    
+    <h4>Passenger Information</h4>
     <div class="row">
 
         <table class="table table-striped passInfo" style="margin-bottom: 0">
-                <h4>Passenger Information</h4>
+               
             <thead>
                 <!-- Column names -->
                 <tr>

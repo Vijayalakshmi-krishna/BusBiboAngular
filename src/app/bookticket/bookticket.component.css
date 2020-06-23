@@ -16,11 +16,11 @@
 
 }
 .passInfo{
-  background-color: #8dbd17;
+  background-color: bisque;
   color:black;
 }
 .container.seatDesign {
-  background-color: #8dbd17;
+  background-color: bisque;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -112,7 +112,7 @@ p.text span {
     text-align: center;
 }
 .cont3{
-	background-color: brown;
+	background-color: bisque;
 	opacity: .8;
 	color: blue;
 

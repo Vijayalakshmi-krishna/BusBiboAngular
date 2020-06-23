@@ -15,6 +15,7 @@ export class BookingService {
   loginUser(data): Observable<any> {
 
     return this.http.post('https://bus-zone.herokuapp.com/login', data);
+    
   }
 
   registerUser(data): Observable<any> {
