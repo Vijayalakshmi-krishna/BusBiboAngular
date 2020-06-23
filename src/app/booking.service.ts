@@ -13,12 +13,12 @@ export class BookingService {
   constructor(private http: HttpClient) { }
 
   loginUser(data): Observable<any> {
-  
+
     return this.http.post('https://bus-zone.herokuapp.com/login', data);
   }
 
   registerUser(data): Observable<any> {
-    return this.http.post('https://bus-zone.herokuapp.com/login/register', data);
+    return this.http.post('https://bus-zone.herokuapp.com/register', data);
   }
 
   editUserData(data):Observable<any>
