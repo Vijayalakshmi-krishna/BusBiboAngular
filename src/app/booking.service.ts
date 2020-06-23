@@ -13,35 +13,34 @@ export class BookingService {
   constructor(private http: HttpClient) { }
 
   loginUser(data): Observable<any> {
-    console.log("Inservice")
-    console.log(data);
-    return this.http.post('http://localhost:3000/login', data);
+  
+    return this.http.post('https://bus-zone.herokuapp.com/login', data);
   }
 
   registerUser(data): Observable<any> {
-    return this.http.post('http://localhost:3000/login/register', data);
+    return this.http.post('https://bus-zone.herokuapp.com/login/register', data);
   }
 
   editUserData(data):Observable<any>
   {
     var email=sessionStorage.email
-    return this.http.put('http://localhost:3000/edituser/'+ email, data)
+    return this.http.put('https://bus-zone.herokuapp.com/edituser/'+ email, data)
   }
 
   searchbus(data): Observable<any> {
-    return this.http.post('http://localhost:3000/searchbuses', data);
+    return this.http.post('https://bus-zone.herokuapp.com/searchbuses', data);
   }
 
   getBuses(): Observable<any> {
-    return this.http.get('http://localhost:3000/buslist')
+    return this.http.get('https://bus-zone.herokuapp.com/buslist')
   }
 
   addbusData(data): Observable<any> {
-    return this.http.post('http://localhost:3000/addbus', data);
+    return this.http.post('https://bus-zone.herokuapp.com/addbus', data);
   }
 
   editBusData(data): Observable<any> {
-    return this.http.put('http://localhost:3000/editbus/' + data.busNum, data)
+    return this.http.put('https://bus-zone.herokuapp.com/editbus/' + data.busNum, data)
   }
 
   getBusInfo() {
@@ -52,19 +51,19 @@ export class BookingService {
   }
 
   setBlockedSeats(seats): Observable<any> {
-    return this.http.put('http://localhost:3000/editSeats/' + this.busData.busNum + '/' + this.busData.avlSeats, seats);
+    return this.http.put('https://bus-zone.herokuapp.com/editSeats/' + this.busData.busNum + '/' + this.busData.avlSeats, seats);
   }
 
   getBlockedSeats(busNum): Observable<any> {
-    return this.http.get('http://localhost:3000/seatstatus/' + busNum)
+    return this.http.get('https://bus-zone.herokuapp.com/seatstatus/' + busNum)
   }
 
   setTicketData(ticketData): Observable<any> {
-    return this.http.post('http://localhost:3000/addticket', ticketData)
+    return this.http.post('https://bus-zone.herokuapp.com/addticket', ticketData)
   }
 
   getUserTickets(email): Observable<any> {
-    return this.http.get('http://localhost:3000/listtickets/' + email)
+    return this.http.get('https://bus-zone.herokuapp.com/listtickets/' + email)
   }
 
   setTicketId(ticketId)
@@ -79,19 +78,17 @@ export class BookingService {
 
   getTicket(ticketId)
   {
-    return this.http.get('http://localhost:3000/viewticket/' + ticketId)
+    return this.http.get('https://bus-zone.herokuapp.com/viewticket/' + ticketId)
   }
 
   ChangeStatus(ticketId)
   {
-    return this.http.put('http://localhost:3000/cancelticket/'+ticketId,ticketId)
+    return this.http.put('https://bus-zone.herokuapp.com/cancelticket/'+ticketId,ticketId)
   }
 
   freeSeatsOnCancel(busNum,seats,blockedseats)
   {
-    console.log("Inservice")
-    console.log(seats)
-    console.log(blockedseats)
-    return this.http.put('http://localhost:3000/freeseats/'+busNum+'/' + seats,blockedseats)
+    
+    return this.http.put('https://bus-zone.herokuapp.com/freeseats/'+busNum+'/' + seats,blockedseats)
   }
 }
