@@ -1,6 +1,58 @@
+/* 
+
+
+.border-md {
+    border-width: 2px;
+}
+
+.btn-facebook {
+    background: #405D9D;
+    border: none;
+}
+
+.btn-facebook:hover, .btn-facebook:focus {
+    background: #314879;
+}
+
+.btn-twitter {
+    background: #42AEEC;
+    border: none;
+}
+
+.btn-twitter:hover, .btn-twitter:focus {
+    background: #1799e4;
+}
+
+
+
+
+body {
+    min-height: 100vh;
+}
+
+.form-control:not(select) {
+    padding: 1.5rem 0.5rem;
+}
+
+select.form-control {
+    height: 52px;
+    padding-left: 0.5rem;
+}
+
+.form-control::placeholder {
+    color: #ccc;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.form-control:focus {
+    box-shadow: none;
+} */
+
+
+
 .section {
 	position: relative;
-	height: 110vh;
+	height: 100vh;
 }
 
 .section .section-center {
@@ -14,7 +66,7 @@
 
 #booking {
 	font-family: 'PT Sans', sans-serif;
-	background-image: url('src/assets/Img/bus-bg-2.jpg');
+	background-image: url('src/assets/Img/vipbus.jpg');
 	
 	background-position: center;
 	background-size: cover;
@@ -175,28 +227,19 @@
 .booking-form .submit-btn:hover,
 .booking-form .submit-btn:focus {
     opacity: 0.9;
+    margin: 0;
     
 }
-h4{
-	font-weight: bold;
-	color: white;
-	background-color: black;
-	font-size: 25px;
-	opacity: .9;
+.subBtn{
+	text-align: center;
+}
+
+.pointer{
+    cursor: pointer;
+}
+.viewprofile
+{
+	opacity:0.7;
 	border-radius: 10px;
-}
-
-.booklink
-{
-	color: gray;
-    cursor: not-allowed;
-    text-decoration: underline;
-}
-
-.welcome
-{
-	background-color: firebrick;
-    font-style: italic;
-    font-family: auto;
-
+	border-style: double;
 }

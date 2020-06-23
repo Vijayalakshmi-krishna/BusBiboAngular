@@ -9,6 +9,7 @@ import { EditbusComponent } from './editbus/editbus.component';
 import { ListbusesComponent } from './listbuses/listbuses.component';
 import { ViewticketComponent } from './viewticket/viewticket.component';
 import { PrintticketComponent } from './printticket/printticket.component';
+import { EdituserComponent } from './edituser/edituser.component';
 
 const routes: Routes = [
 
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path:"printticket",
     component:PrintticketComponent
+  },
+  {
+    path:'edituser',
+    component:EdituserComponent
   }
 
 

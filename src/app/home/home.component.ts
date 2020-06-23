@@ -23,8 +23,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loggedinUser=window.sessionStorage.getItem('name');
-    console.log(this.loggedinUser);
+    if(window.sessionStorage.getItem('name') != null)
+    {
+      this.loggedinUser=window.sessionStorage.getItem('name');
+      console.log(this.loggedinUser);
+    }
+    
   }
 
   getBuses() {
@@ -32,19 +36,7 @@ export class HomeComponent implements OnInit {
     console.log(this.busData.value);
     this.bookingService.searchbus(this.busData.value).subscribe((data) => {
       console.log(data);
-      this.busResults=data;
-
-
-      // const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      // let i = 0;
-      // for (i = 0; i < this.busResults.length; i++) {
-      //   this.busResults[i].departDate = new Date()
-      //   this.busResults[i].departDate = this.busResults[i].departDate.getDate() + "-" + months[this.busResults[i].departDate.getMonth()] + "-" + this.busResults[i].departDate.getFullYear();
-      //   console.log(this.busResults[i].departDate)
-      // }
-
-      // this.buses=this.busResults[0].buses
-      // console.log(this.buses);
+      this.busResults=data;      
     })
 
   }

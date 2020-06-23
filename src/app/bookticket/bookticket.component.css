@@ -10,20 +10,31 @@
 
 #bookticket
 {
-  background-image: url("../../assets/Img/seats4.jpg");
+  background-image: url("../../assets/Img/seats3.jpg");
   background-size: cover;
+  height:100vh;
+
+}
+.passInfo{
+  background-color: #8dbd17;
+  color:black;
 }
 .container.seatDesign {
-  background-color:brown;
+  background-color: #8dbd17;
   color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 66vh;
   font-family: 'Lato', sans-serif; 
-  opacity:0.8;  
+  opacity:0.9;   
+  /* float:right; */
+  
 }
+
+
+
 
 .container {
   perspective: 1000px;
@@ -109,8 +120,13 @@ p.text span {
 .col-sm-12{
 	color: greenyellow;
 }
-.passInfo{
-	color: white;
+
+
+.busInfo{
+
+  float:left;
+  opacity: 0.9;
+
 }
 
 .validate
@@ -126,6 +142,7 @@ p.text span {
 {
   background-color: yellow;
   color: green;
+  align-items: center;
 }
 
 

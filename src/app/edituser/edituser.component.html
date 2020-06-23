@@ -1,0 +1,78 @@
+
+
+<div id="booking" class="section">
+    <div class="section-center">
+
+        <div class="container">
+            <div class="row">
+                <table class="table-striped table-dark viewprofile">
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <td>{{userName}}</td>
+                        </tr>
+                        <tr>
+                            <th>Date Of Birth</th>
+                            <td>{{userDOB}}</td>
+                        </tr>
+                        <tr>
+                            <th>E-Mail</th>
+                            <td>{{userEmail}}</td>
+            
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td>{{userPhone}}</td>
+                        </tr>
+                    </tbody>
+            
+                </table>
+                <div class="booking-form">
+                    <form [formGroup]="editUser" (submit)="editData()">
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <span class="form-label">Date Of Birth</span>
+                                    <input class="form-control" type="date" formControlName="dob">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span class="form-label">Phone Number</span>
+                                    <input class="form-control" type="text" maxlength="10" pattern="\d{10}"
+                                        formControlName="phone" placeholder="Phone Number">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <span class="form-label">Name</span>
+                                    <input class="form-control" type="text" formControlName="name" placeholder="Name" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12 subBtn">
+                                <div class="form-btn">
+                                    <input type="submit" class="submit-btn" value="Edit My Profile" />
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

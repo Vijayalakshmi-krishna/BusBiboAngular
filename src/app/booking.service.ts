@@ -22,6 +22,12 @@ export class BookingService {
     return this.http.post('http://localhost:3000/login/register', data);
   }
 
+  editUserData(data):Observable<any>
+  {
+    var email=sessionStorage.email
+    return this.http.put('http://localhost:3000/edituser/'+ email, data)
+  }
+
   searchbus(data): Observable<any> {
     return this.http.post('http://localhost:3000/searchbuses', data);
   }
@@ -74,5 +80,18 @@ export class BookingService {
   getTicket(ticketId)
   {
     return this.http.get('http://localhost:3000/viewticket/' + ticketId)
+  }
+
+  ChangeStatus(ticketId)
+  {
+    return this.http.put('http://localhost:3000/cancelticket/'+ticketId,ticketId)
+  }
+
+  freeSeatsOnCancel(busNum,seats,blockedseats)
+  {
+    console.log("Inservice")
+    console.log(seats)
+    console.log(blockedseats)
+    return this.http.put('http://localhost:3000/freeseats/'+busNum+'/' + seats,blockedseats)
   }
 }

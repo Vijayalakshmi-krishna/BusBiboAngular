@@ -15,6 +15,7 @@ import { ViewticketComponent } from './viewticket/viewticket.component';
 import { EditbusComponent } from './editbus/editbus.component';
 import { ListbusesComponent } from './listbuses/listbuses.component';
 import { PrintticketComponent } from './printticket/printticket.component';
+import { EdituserComponent } from './edituser/edituser.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PrintticketComponent } from './printticket/printticket.component';
     ViewticketComponent,
     EditbusComponent,
     ListbusesComponent,
-    PrintticketComponent
+    PrintticketComponent,
+    EdituserComponent
   ],
   imports: [
     BrowserModule,

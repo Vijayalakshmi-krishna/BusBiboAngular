@@ -109,8 +109,10 @@ export class BookticketComponent implements OnInit {
       console.log(this.busInfo.avlSeats)
 
 
+    
+      this.isBusInfo = false;
+      this.isBusSeats = false;
       this.isMakePayment = this.busInfo.avlSeats > 0 ? true : false;
-
       //for seat display to the user
       this.occupiedSeats.forEach((item) => {
         if (!this.bookedSeats.includes(item)) {
@@ -126,7 +128,10 @@ export class BookticketComponent implements OnInit {
   }
 
   makePayment() {
-    this.isMakePayment = true;
+
+   // this.isMakePayment = true;
+
+
     //update the seats inforation into the db
     if (this.userEmail) {
       this.bookingservice.setBlockedSeats(this.occupiedSeats).subscribe((data) => {
@@ -134,6 +139,7 @@ export class BookticketComponent implements OnInit {
         //console.log(data.message);
         if (data.message == "Seats Updated") {
           this.isBookingSuccess = true;
+
           var today = new Date();
 
           var bookingDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -145,24 +151,24 @@ export class BookticketComponent implements OnInit {
             userEmail: this.userEmail,
             userName: this.userName,
             userPhone: this.userPhone,
-            ticketId:this.generateTicketId(),
+            ticketId: this.generateTicketId(),
             busNum: this.busInfo.busNum,
             agencyname: this.busInfo.agencyname,
             source: this.busInfo.source,
             destination: this.busInfo.destination,
             seats: this.bookSeats,
-            status:"Confirmed",
+            status: "Confirmed",
             departDate: this.busInfo.departDate,
             departTime: this.busInfo.departTime,
-            arrivalDate:this.busInfo.arrivalDate,
-            arrivalTime:this.busInfo.arrivalTime,
+            arrivalDate: this.busInfo.arrivalDate,
+            arrivalTime: this.busInfo.arrivalTime,
             fare: this.busfare,
             bookingDate: bookingDate,
             bookingTime: bookingTime
           }
           this.bookingservice.setTicketData(this.ticketInfo).subscribe((data) => {
             console.log(data)
-            
+
           })
         }
       })

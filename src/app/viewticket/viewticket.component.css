@@ -3,3 +3,9 @@ table.ticket1{
     border-radius: 15px;
     color: black !important; 
   }
+
+  .mynav {
+    border-bottom: 1px solid rebeccapurple;
+    background-color: darkgreen;
+    border-radius: 10px;
+  }
