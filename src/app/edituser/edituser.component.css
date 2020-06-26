@@ -74,12 +74,13 @@ select.form-control {
 }
 
 .booking-form {
-	background: rgba(0, 0, 0, 0.7);
+	background: yellowgreen;
 	padding: 40px;
-	border-radius: 6px;
+	border-radius: 10px;
 	margin: auto;
 	
 }
+
 
 .booking-form .form-group {
 	position: relative;
@@ -150,7 +151,7 @@ select.form-control {
 	line-height: 24px;
 	height: 24px;
 	font-size: 12px;
-	color: #fff;
+	color:black;
 }
 
 .booking-form .form-checkbox input {
@@ -242,4 +243,14 @@ select.form-control {
 	opacity:0.7;
 	border-radius: 10px;
 	border-style: double;
+}
+
+.editcard
+{
+	margin: auto;
+	background-color:#ffbf00;
+}
+.userlist
+{
+	background-color: sandybrown;
 }

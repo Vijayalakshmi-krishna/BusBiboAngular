@@ -21,6 +21,7 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
+              "src/Fasticon-Happy-Bus-Bus-yellow.ico",
               "src/assets"
             ],
             "styles": [

@@ -19,7 +19,7 @@ export class BusOperatorComponent implements OnInit {
       'departTime':new FormControl('',Validators.required),
       'arrivalDate':new FormControl('',Validators.required),
       'arrivalTime':new FormControl('',Validators.required),
-      'avlSeats':new FormControl('',Validators.required)
+      'avlSeats':new FormControl('12',Validators.required)
       
     })
    }
