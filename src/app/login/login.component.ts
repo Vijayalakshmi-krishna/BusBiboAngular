@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('name', data.result.name);
           sessionStorage.setItem('phone', data.result.phone);
           sessionStorage.setItem('dob', data.result.dob);
-          window.location.reload();
+          location.reload();
           this.router.navigate(['/home']);
         }
 

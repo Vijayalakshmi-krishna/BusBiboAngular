@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
         console.log(data);
         if(data.message =='Approved Bus Data')
           {
-            window.location.reload();
+            location.reload();
           }
       })
     }  
