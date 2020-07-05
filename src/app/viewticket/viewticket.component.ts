@@ -21,6 +21,8 @@ export class ViewticketComponent implements OnInit {
   completed;
   cancelled;
   isCancelled: boolean = false;
+  allowCancel: boolean = false;
+  isCancelClicked: boolean = false;
   constructor(private bookingservice: BookingService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,35 +32,26 @@ export class ViewticketComponent implements OnInit {
     this.userPhone = sessionStorage.getItem('phone');
 
     this.bookingservice.getUserTickets(this.userEmail).subscribe((data) => {
-      console.log(data);
+
       this.ticketsList = data;
-      console.log(this.ticketsList)
-
-
 
       this.upcoming = this.ticketsList.filter((item) => {
         var todayDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
         console.log(Date.parse(todayDate));
         return Date.parse(item.departDate) >= Date.parse(todayDate) && item.status != "Cancelled";
       })
-      console.log("Confirmed tickets")
-      console.log(this.upcoming)
 
       this.completed = this.ticketsList.filter((item) => {
         var todayDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
         console.log(Date.parse(todayDate));
         return Date.parse(item.departDate) < Date.parse(todayDate) && item.status != "Cancelled";
       })
-      console.log("Completed journey")
-      console.log(this.completed)
 
-      this.cancelled=this.ticketsList.filter((item)=>{
+      this.cancelled = this.ticketsList.filter((item) => {
         return item.status == "Cancelled"
       })
-      console.log("Cancelled")
-      console.log(this.cancelled);
-    })
 
+    })
 
 
 
@@ -69,35 +62,73 @@ export class ViewticketComponent implements OnInit {
     this.router.navigate(['/printticket'])
   }
 
-  cancelTicketId(ticketId, seats, busNum) {
+  cancelTicketId(ticketId, seats, busNum, departDate, departTime) {
 
-    this.bookingservice.ChangeStatus(ticketId).subscribe((data) => {
-      console.log(data);
-    })
+  
+    this.isCancelClicked = true;
+    var today = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 
-    this.bookingservice.getBlockedSeats(busNum).subscribe((data) => {
+    if (Date.parse(departDate) > Date.parse(today)) {     
+      this.allowCancel = true;
+    }
+    else if (Date.parse(departDate) == Date.parse(today)) {
+      var getTime = new Date();
 
-      if (data.seatstatus) {
-        var result = Object.keys(data.seatstatus).filter(function (key) {
-          return data.seatstatus[key] == true;
-        });
+      var splitTime = departTime.split(':')
+      console.log(splitTime);
+      var hours = getTime.getHours();
+      console.log(hours);
+      var minutes = getTime.getMinutes();
+      if (splitTime[0] - hours > 5) {
 
-        console.log(result);
-        // console.log(result);
-        //update the occupied seats array with the seat status from DB
-        result.forEach((item) => {
-          this.blockedSeats.push(item);
-        })
-
-        this.blockedSeats = result;
-        console.log(this.blockedSeats);
+        console.log("Cancel can be done")
+        this.allowCancel = true;
+      }
+      else if (splitTime[0] - hours == 5) {
+        if (splitTime[1] > minutes) {
+          console.log("cancel allowed")
+          this.allowCancel = true;
+        }
+        else {
+          console.log("cancel not allowed")
+        }
+      }
+      else {
+        console.log("cancel not allowed")
       }
 
-      this.bookingservice.freeSeatsOnCancel(busNum, seats, this.blockedSeats).subscribe((data) => {
+    }
+
+    if (this.allowCancel) {
+
+      this.bookingservice.ChangeStatus(ticketId).subscribe((data) => {
         console.log(data);
-        this.isCancelled = true;
       })
-    })
+
+      this.bookingservice.getBlockedSeats(busNum).subscribe((data) => {
+
+        if (data.seatstatus) {
+          var result = Object.keys(data.seatstatus).filter(function (key) {
+            return data.seatstatus[key] == true;
+          });
+
+          console.log(result);
+
+          result.forEach((item) => {
+            this.blockedSeats.push(item);
+          })
+
+          this.blockedSeats = result;
+          console.log(this.blockedSeats);
+        }
+
+        this.bookingservice.freeSeatsOnCancel(busNum, seats, this.blockedSeats).subscribe((data) => {
+          console.log(data);
+          this.isCancelled = true;
+        })
+      })
+     // window.location.reload();
+    }
 
   }
 }

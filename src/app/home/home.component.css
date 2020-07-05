@@ -201,3 +201,11 @@ h4{
     font-family: auto;
 
 }
+.validate
+{
+	color:red;
+	align-content: center;
+	margin: auto;
+	background: yellowgreen;
+	font-weight: bold;
+}

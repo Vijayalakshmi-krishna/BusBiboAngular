@@ -77,19 +77,29 @@ export class BookingService {
     return this.ticketId;
   }
 
-  getTicket(ticketId)
+  getTicket(ticketId): Observable<any>
   {
     return this.http.get('https://bus-zone.herokuapp.com/viewticket/' + ticketId)
   }
 
-  ChangeStatus(ticketId)
+  ChangeStatus(ticketId): Observable<any>
   {
     return this.http.put('https://bus-zone.herokuapp.com/cancelticket/'+ticketId,ticketId)
   }
 
-  freeSeatsOnCancel(busNum,seats,blockedseats)
+  freeSeatsOnCancel(busNum,seats,blockedseats): Observable<any>
   {
     
     return this.http.put('https://bus-zone.herokuapp.com/freeseats/'+busNum+'/' + seats,blockedseats)
+  }
+
+  approvebus(busNum): Observable<any>
+  {
+    return this.http.put('https://bus-zone.herokuapp.com/approvebus/'+busNum,busNum);
+  }
+
+  rejectbus(busNum): Observable<any>
+  {
+    return this.http.put('https://bus-zone.herokuapp.com/rejectbus/' + busNum,busNum)
   }
 }

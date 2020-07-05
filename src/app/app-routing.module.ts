@@ -10,6 +10,7 @@ import { ListbusesComponent } from './listbuses/listbuses.component';
 import { ViewticketComponent } from './viewticket/viewticket.component';
 import { PrintticketComponent } from './printticket/printticket.component';
 import { EdituserComponent } from './edituser/edituser.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
 
@@ -27,7 +28,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'login/register',
+    path: 'register',
     component: RegisterComponent
   },
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path:'edituser',
     component:EdituserComponent
+  },
+  {
+    path:'admin',
+    component:AdminComponent
   }
 
 

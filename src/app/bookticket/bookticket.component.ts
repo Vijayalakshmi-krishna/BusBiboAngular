@@ -94,25 +94,23 @@ export class BookticketComponent implements OnInit {
 
   //when Comfirm seats is clicked
   confirmSeats() {
+    console.log("userlogged in:")
     console.log(this.isUserLoggedIn)
-
-    if (this.isUserLoggedIn != null) {
-      this.isConfirmClicked = true;//flag for confirm click button
+    this.isConfirmClicked = true;
+    console.log(this.busInfo.avlSeats)  
+    this.isMakePayment = this.busInfo.avlSeats > 0 ? true : false;
+    if (this.isUserLoggedIn) {
+      //flag for confirm click button
       this.bookSeats = "";//make empty to avoid dup display of blocked seats
       //move the seleted seats to occupied array
       this.selSeatArray.forEach((item) => {
         if (!this.occupiedSeats.includes(item)) {
           this.occupiedSeats.push(item)
         }
-      })
-
-      console.log(this.busInfo.avlSeats)
-
-
-    
+      })       
       this.isBusInfo = false;
       this.isBusSeats = false;
-      this.isMakePayment = this.busInfo.avlSeats > 0 ? true : false;
+     
       //for seat display to the user
       this.occupiedSeats.forEach((item) => {
         if (!this.bookedSeats.includes(item)) {

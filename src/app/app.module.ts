@@ -16,6 +16,7 @@ import { EditbusComponent } from './editbus/editbus.component';
 import { ListbusesComponent } from './listbuses/listbuses.component';
 import { PrintticketComponent } from './printticket/printticket.component';
 import { EdituserComponent } from './edituser/edituser.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EdituserComponent } from './edituser/edituser.component';
     EditbusComponent,
     ListbusesComponent,
     PrintticketComponent,
-    EdituserComponent
+    EdituserComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

@@ -1,98 +1,3 @@
-<!-- <div class="container">
-    <div class="row py-5 mt-4 align-items-center">
-
-
-        <div class="col-md-7 col-lg-6 ml-auto">
-            <form [formGroup]="registerForm" (submit)="SendData()">
-                <div class="row">
-
-
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
-                        </div>
-                        <input type="text" formControlName="name" placeholder="Name"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
-
-                   
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-envelope text-muted"></i>
-                            </span>
-                        </div>
-                        <input type="email" formControlName="email" placeholder="Email Address"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
-
-                   
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-phone-square text-muted"></i>
-                            </span>
-                        </div>
-                      
-                        <input type="text" maxlength="10" pattern="\d{10}" formControlName="phone"
-                            placeholder="Phone Number" class="form-control bg-white border-md border-left-0 pl-3">
-                    </div>.
-
-
-                       <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-black-tie text-muted"></i>
-                            </span>
-                        </div>
-                        <select formControlName="type"
-                            class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value="">Choose User...</option>
-                            <option value="P">Passenger</option>
-                            <option value="B">BusOperator</option>
-                            <option value="A">Admin</option>
-
-                        </select>
-                    </div>
-
-                       <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-lock text-muted"></i>
-                            </span>
-                        </div>
-                        <input type="password" formControlName="password" maxlength="6" placeholder="Password"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
-
-                 
-                    <div class="form-group col-lg-12 mx-auto mb-0">
-                        <input type="submit" class="btn btn-primary btn-block py-2" value="Register" />
-
-                    </div>
-
-                
-                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                        <div class="border-bottom w-100 ml-5"></div>
-                        <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
-                        <div class="border-bottom w-100 mr-5"></div>
-                    </div>
-
-                   
-                    <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Already Registered? <a routerLink="/login"
-                                class="text-primary ml-2">Login</a></p>
-                    </div>
-
-                </div>
-            </form>
-        </div>
-    </div>
-</div> -->
-
-
 
 <div id="booking" class="section">
     <div class="section-center">
@@ -100,36 +5,22 @@
             <div class="row">
                 <div class="booking-form">
                     <form [formGroup]="registerForm" (submit)="SendData()">
-                        <div class="row">
-
-                            <div class="col-md-6">
+                        <div class="row">                            
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <span class="form-label">User Type</span>
-                                    <select formControlName="type" class="form-control" placeholder="Choose User..."
+                                    <span class="form-label">Name</span>
+                                    <input class="form-control" type="text" formControlName="name" placeholder="Name"
                                         required>
-                                        <option value="P">Passenger</option>
-                                        <option value="B">BusOperator</option>
-                                    </select>
-                                </div>
-
-
-                            </div>
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <span class="form-label">Date Of Birth</span>
-                                    <input class="form-control" type="date" formControlName="dob">
+                                        <span *ngIf="(registerForm.get('name').value == '') &&(registerForm.get('name').touched || registerForm.get('name').dirty)" [ngClass]="{validate:(registerForm.get('name').value == '') &&(registerForm.get('name').touched || registerForm.get('name').dirty)}">Name Required</span>
                                 </div>
                             </div>
-
                         </div>
                         
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <span class="form-label">Name</span>
-                                    <input class="form-control" type="text" formControlName="name" placeholder="Name"
-                                        required>
+                                    <span class="form-label">Date Of Birth</span>
+                                    <input class="form-control" type="date" formControlName="dob">
                                 </div>
                             </div>
 
@@ -138,14 +29,12 @@
                                     <span class="form-label">Phone Number</span>
                                     <input class="form-control" type="text" maxlength="10" pattern="\d{10}"
                                         formControlName="phone" placeholder="Phone Number">
+
+                                        <span *ngIf="(registerForm.get('phone').value == '') &&(registerForm.get('phone').touched || registerForm.get('phone').dirty)" [ngClass]="{validate:(registerForm.get('phone').value == '') &&(registerForm.get('phone').touched || registerForm.get('phone').dirty)}">Phone Number Required</span>
                                 </div>
                             </div>
-
-
-
-
                         </div>
-
+                        
                         <div class="row">
 
                             <div class="col-md-6">
@@ -153,18 +42,21 @@
                                     <span class="form-label">E-mail</span>
                                     <input class="form-control" type="email" formControlName="email"
                                         placeholder="Email Address" required>
+                                        <span *ngIf="(registerForm.get('email').value == '') &&(registerForm.get('email').touched || registerForm.get('email').dirty)" [ngClass]="{validate:(registerForm.get('email').value == '') &&(registerForm.get('email').touched || registerForm.get('email').dirty)}">E-Mail Required</span>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="form-label">Password</span>
                                     <input class="form-control" type="password" formControlName="password" maxlength="6"
                                         placeholder="Password" required>
+
+                                        <span *ngIf="(registerForm.get('password').value == '') &&(registerForm.get('password').touched || registerForm.get('password').dirty)" [ngClass]="{validate:(registerForm.get('password').value == '') &&(registerForm.get('password').touched || registerForm.get('password').dirty)}">E-Mail Required</span>
                                 </div>
                             </div>
-
-
                         </div>
+                        
                         <div class="row">
 
                             <div class="col-md-3">
@@ -176,10 +68,16 @@
 
                                 </div>
                             </div>
+                            <br>
+
+                            <div *ngIf="isEmailExists" class="text-center w-100 emailexists">
+                                <span  ngClass="{emailexists:isEmailExists}">Your Email Already Exists.Please login.</span>
+                            </div>
+                            <br>
 
                             <div class="text-center w-100">
-                                <p class="text-muted font-weight-bold">Already a User? <a routerLink="/login"
-                                        class="text-primary ml-2 pointer">Login</a></p>
+                                <p class="font-weight-bold emailexists">Already a User? <a routerLink="/login"
+                                        class="text-success ml-2 pointer">Login</a></p>
                             </div>
                         </div>
                     </form>

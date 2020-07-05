@@ -7,16 +7,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  userEmail;
+  userName;
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.userEmail = sessionStorage.getItem('email');
+    this.userName=sessionStorage.getItem('name');    
+    this.router.navigate(['home']);
   }
 
-  logout()
-  {
+  logout() {
     sessionStorage.clear();
     this.router.navigate(['/login'])
+    window.location.reload();
   }
 
 }

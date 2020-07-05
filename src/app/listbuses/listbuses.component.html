@@ -15,6 +15,7 @@
           <th scope="col">Arrival Date</th>
           <th scope="col">Arrival Time</th>
           <th scope="col">Total Seats</th>
+          <th scope="col">Approval Status</th>
         </tr>
       </thead>
       <tbody *ngFor="let bus of allBuses;let i=index">
@@ -29,6 +30,7 @@
           <td>{{bus.arrivalDate | date:'mediumDate'}}</td>
           <td>{{bus.arrivalTime}}</td>
           <td>{{bus.avlSeats}}</td>
+          <td>{{bus.adminStatus}}</td>
         </tr>
 
       </tbody>

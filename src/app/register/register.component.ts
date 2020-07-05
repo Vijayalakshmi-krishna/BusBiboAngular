@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import {BookingService} from '../booking.service';
+import { BookingService } from '../booking.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,16 +11,16 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerForm;
   regUserData;
-  constructor(private bookingservice:BookingService,private router: Router) {
+  isEmailExists: boolean = false;
+  constructor(private bookingservice: BookingService, private router: Router) {
     this.registerForm = new FormGroup({
-      'type':new FormControl('',Validators.required),
-      'dob':new FormControl(''),
-      'name': new FormControl('', Validators.required),      
+      'dob': new FormControl(''),
+      'name': new FormControl('', Validators.required),
       'email': new FormControl('', [Validators.email, Validators.required]),
-      'phone':new FormControl('',Validators.minLength(10)),
+      'phone': new FormControl('', Validators.minLength(10)),
       'password': new FormControl('', [Validators.required, Validators.minLength(6)])
-    
-      
+
+
     })
 
   }
@@ -29,15 +29,21 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  SendData()
-  {
-    if(this.registerForm.valid)
-    {
+  SendData() {
+    if (this.registerForm.valid) {
       console.log(this.registerForm.value);
-      this.bookingservice.registerUser(this.registerForm.value).subscribe((data)=>{
-        this.regUserData=data;
+      this.bookingservice.registerUser(this.registerForm.value).subscribe((data) => {
+        this.regUserData = data;
         console.log(this.regUserData)
-        this.router.navigate(['/login']);
+        console.log(this.regUserData.Message)
+        if (this.regUserData.Message == "Email Already exists") {
+          this.isEmailExists = true;
+        }
+        else
+        {
+          this.router.navigate(['/login']);
+        }
+       
       })
     }
   }

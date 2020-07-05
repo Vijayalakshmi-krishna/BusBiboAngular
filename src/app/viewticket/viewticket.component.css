@@ -9,3 +9,14 @@ table.ticket1{
     background-color: darkgreen;
     border-radius: 10px;
   }
+
+  .validate
+  {
+    color:red;
+    font-weight: bold;    
+  }
+  .success
+  {
+    color:green;
+    font-weight: bold;
+  }
