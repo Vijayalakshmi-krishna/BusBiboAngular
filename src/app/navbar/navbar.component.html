@@ -14,7 +14,7 @@
         <a class="nav-link" routerLink='admin'>Admin</a>
       </li>
 
-      <li *ngIf="userEmail != null && userName != 'BusOperator' && userName != 'Admin'" class="nav-item dropdown">
+      <li *ngIf="userEmail != null && userEmail != 'operator@gmail.com' && userEmail != 'admin@gmail.com'" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Manage Users
@@ -25,7 +25,7 @@
         </div>
       </li>
 
-      <li *ngIf="userName=='BusOperator'" class="nav-item dropdown">
+      <li *ngIf="userEmail=='operator@gmail.com'" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Manage Buses
