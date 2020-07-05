@@ -22,7 +22,8 @@
             "assets": [
               "src/favicon.ico",
               "src/Fasticon-Happy-Bus-Bus-yellow.ico",
-              "src/assets"
+              "src/assets",
+              "src/_redirects"
             ],
             "styles": [
               "src/styles.css",
